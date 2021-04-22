@@ -1,9 +1,9 @@
 ## Communal Jar of Laughter
 by Yiwei Huang
 
-This "Jar" enables you to laugh together with your remote friends.
-It could stay in the peripheral and collect your communal laughter.
-The "Jar" uses a machine learning model pre-trained with ambient noises in my daily life
+This "Jar" enables you to laugh together with your remote friends.\
+It could stay in the peripheral and collect your communal laughter.\
+The "Jar" uses a machine learning model pre-trained with ambient noises in my daily life\
 during the 2020 quarantine, achieved by using [the Teachable Machine](https://teachablemachine.withgoogle.com/).
 
 ### Dependencies
