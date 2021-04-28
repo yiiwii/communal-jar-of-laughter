@@ -1,6 +1,5 @@
-[https://raw.githubusercontent.com/yiiwii/communal-jar-of-laughter/main/demopic.png |800]
-
-
+![image](https://raw.githubusercontent.com/yiiwii/communal-jar-of-laughter/main/demopic.png
+)
 ## Communal Jar of Laughter
 by Yiwei Huang
 
