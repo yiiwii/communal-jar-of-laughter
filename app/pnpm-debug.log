@@ -1,0 +1,45 @@
+---
+  0 debug pnpm:scope: 
+    selected: 1
+    workspacePrefix: null
+  1 info pnpm: 
+    message: "A store server is running. All store manipulations are delegated to it."
+    prefix: "/app"
+  2 debug pnpm:package-json: 
+    initial: 
+      name: "communal-jar-of-laughter22"
+      version: "1.0.0"
+      description: "p5.js multiplayer experience"
+      main: "server.js"
+      scripts: 
+        start: "node server.js"
+      dependencies: 
+        bufferutil: "^4.0.3"
+        express: "^4.17.1"
+        matter: "^0.14.2"
+        p5: ""
+        socket.io: "^4.0.1"
+      engines: 
+        node: "12.x"
+      license: ""
+      keywords: []
+      readme: "## Communal Jar of Laughter\nby Yiwei Huang\n\nThis \"Jar\" enables you to laugh together with your remote friends.\nIt could stay in the peripheral and collect your communal laughter.\nThe \"Jar\" uses a machine learning model pre-trained with ambient noises in my daily life\nduring the 2020 quarantine, achieved by using [the Teachable Machine](https://teachablemachine.withgoogle.com/).\n\n### Dependencies\nThis demo also Uses p5.js, socket.io, node.js, express\n\n\n#### Resources\n[The Coding Train ](https://youtu.be/bjULmG8fqc8)\n[matterjs](https://brm.io/matter-js/)\n\n\n#### Dev Log\n- Show how many users on line\n- Multi-user color coding"
+      readmeFilename: "README.md"
+      gitHead: "a4132287f2648671c3f65801acdcfb0fc1d46e33"
+      _id: "communal-jar-of-laughter22@1.0.0"
+    prefix: "/app"
+  3 warn pnpm: 
+    message: "Moving express that was installed by a different package manager to \"node_modules/.ignored"
+    prefix: "/app"
+  4 error pnpm: 
+    message: 
+      errno: -39
+      code: "ENOTEMPTY"
+      syscall: "rename"
+      path: "/rbd/pnpm-volume/9e2d778a-f41b-4d5c-9ef7-9b767640e646/node_modules/express"
+      dest: "/rbd/pnpm-volume/9e2d778a-f41b-4d5c-9ef7-9b767640e646/node_modules/.ignored/express"
+    err: 
+      name: "Error"
+      message: "ENOTEMPTY: directory not empty, rename '/rbd/pnpm-volume/9e2d778a-f41b-4d5c-9ef7-9b767640e646/node_modules/express' -> '/rbd/pnpm-volume/9e2d778a-f41b-4d5c-9ef7-9b767640e646/node_modules/.ignored/express'"
+      code: "ENOTEMPTY"
+      stack: "Error: ENOTEMPTY: directory not empty, rename '/rbd/pnpm-volume/9e2d778a-f41b-4d5c-9ef7-9b767640e646/node_modules/express' -> '/rbd/pnpm-volume/9e2d778a-f41b-4d5c-9ef7-9b767640e646/node_modules/.ignored/express'"
