@@ -1,7 +1,7 @@
 ![image](https://raw.githubusercontent.com/yiiwii/communal-jar-of-laughter/main/demopic.png
 )
 ## Communal Jar of Laughter
-by Yiwei Huang
+created by Yiwei Huang
 
 This "Jar" enables you to laugh together with your remote friends.
 It could stay in the peripheral and collect your communal laughter.
