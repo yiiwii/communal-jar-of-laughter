@@ -1,6 +1,6 @@
 ![image](https://raw.githubusercontent.com/yiiwii/communal-jar-of-laughter/main/demopic.png
 )
-###Hosted on [Glitch](https://glitch.com) Can be accessed on pc, mac or mobile phone through this [link](https://communal-jar-of-laughter22.glitch.me/)
+### Hosted on [Glitch](https://glitch.com) Can be accessed on pc, mac or mobile phone through this [link](https://communal-jar-of-laughter22.glitch.me/)
 ## Communal Jar of Laughter
 created by Yiwei Huang
 
