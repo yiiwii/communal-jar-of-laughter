@@ -19,13 +19,14 @@ class Circle {
     rotate(angle);
     rectMode(CENTER);
     strokeWeight(0);
-    stroke(255);
+    stroke(0);
     fill(this.color);
     ellipse(0, 0, this.r * 2);
-    fill(0,0,0);
-    noStroke();
+    fill(0);
+    strokeWeight(1);
     ellipse(-1*this.r*0.3,-1*this.r*0.2,this.r/5, this.r/3);
     ellipse(1*this.r*0.3,-1*this.r*0.2,this.r/5, this.r/3);
+    //fill(0);
     arc(0,this.r*0.2, this.r*0.8, this.r*0.8, 0-PI/20, PI+PI/20, CHORD);
     pop();
   }

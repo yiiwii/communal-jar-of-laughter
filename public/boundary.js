@@ -4,7 +4,6 @@ class Boundary {
       friction: 0.3,
       restitution: 0.6,
       isStatic: true,
-//      angle: PI / 4
     };
     this.body = Bodies.rectangle(x, y, w, h, options);
     this.w = w;

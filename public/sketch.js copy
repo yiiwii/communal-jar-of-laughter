@@ -36,7 +36,7 @@ let circles = [];
 let grounds = [];
 let mConstraint;
 let canvas;
-let module = ((window.innerHeight / 100) * window.innerWidth) / 100 / 10;
+let module = window.innerHeight / 40;
 let sizes = [
   module,
   module * 1.5,
@@ -46,15 +46,7 @@ let sizes = [
   module * 1.5,
   module * 0.8
 ];
-let colorStrings = [
-  "#FFFB00",
-  "#fc8e2d",
-  "#00D9FF",
-  "#FF0066",
-  "#f1ccac",
-  "#4c4cff",
-  "#b967ff"
-];
+let colorStrings = ["#FFFB00", "#D9F6FA", "#00D9FF", "#FF0066", "#f1ccac","#4c4cff", "#b967ff"];
 //["#d1face", "#ffac41", "#c5d87c", "#b0efeb", "#f1ccac","#4c4cff", "#3d5ba5", "#b967ff"]
 let index = 0;
 
@@ -67,10 +59,11 @@ function preload() {
 
 function setup() {
   createCanvas(window.innerWidth, window.innerHeight);
-
+  
   //capture video
   //capture = createCapture(VIDEO);
   //capture.size(1920, 1080);
+  
   
   // Start classifying
   // The sound model will continuously listen to the microphone
@@ -79,36 +72,23 @@ function setup() {
   //socket
   socket = io.connect();
   //receive trigger
-  socket.on("trigger", function(data) {
-    dropFriendCircle(data);
-  });
-  socket.on("onlineNum", arg => {
-    onlineNumber = arg;
-  });
-  socket.on("indexNum", arg => {
-    index = arg;
-  });
+  socket.on("trigger", function(data){dropFriendCircle(data)});
+  socket.on("onlineNum", (arg) => {onlineNumber = arg});
+  socket.on("indexNum", (arg) => {index = arg});
   //matters engine setup
   engine = Engine.create();
   world = engine.world;
   grounds.push(new Boundary(0, window.innerHeight / 2, 80, window.innerHeight));
-  grounds.push(
-    new Boundary(
-      window.innerWidth,
-      window.innerHeight / 2,
-      80,
-      window.innerHeight
-    )
-  );
+  grounds.push(new Boundary(window.innerWidth, window.innerHeight / 2, 80, window.innerHeight));
   grounds.push(new Boundary(200, 0, window.innerWidth * 2, 80));
-  grounds.push(
-    new Boundary(200, window.innerHeight, window.innerWidth * 2, 200)
-  );
+  grounds.push(new Boundary(200, window.innerHeight, window.innerWidth * 2, 200));
   World.add(world, grounds);
+  
 }
 
 // function that counts the time of effective event, duration longer than 1s
 function isEvent() {
+
   trigger = 1;
   if (label === eventLabel) {
     eventTrigger = true;
@@ -139,12 +119,12 @@ function gotResult(error, results) {
 
 // function when screen is touched, burst circles
 function touchStarted() {
-  dropPoke();
+  dropCircle();
 }
 
 // function when mouse is clicked
 function mouseClicked() {
-  dropPoke();
+  dropCircle();
 }
 
 // function to drop circles
@@ -152,22 +132,9 @@ function dropCircle() {
   let posX = random(80, window.innerWidth - 80);
   let size = random(sizes);
   let color = colorStrings[index % colorStrings.length];
-  //circles.push(new Circle(posX, 10, size / 2, color));
   circles.push(new Circle(posX, 10, size / 2, color));
   //send the data to server
-  var data = { index: index, mode: "circle" };
-  socket.emit("trigger", data);
-  //socket.emit("playerIndex",index);
-}
-
-function dropPoke() {
-  let posX = random(80, window.innerWidth - 80);
-  let size = random(sizes);
-  let color = colorStrings[index % colorStrings.length];
-  //circles.push(new Circle(posX, 10, size / 2, color));
-  circles.push(new Poke(posX, 10, size / 2, color));
-  //send the data to server
-  var data = { index: index, mode: "poke" };
+  var data = { index: index };
   socket.emit("trigger", data);
   //socket.emit("playerIndex",index);
 }
@@ -177,13 +144,7 @@ function dropFriendCircle(data) {
   let posX = random(window.innerWidth);
   let size = random(sizes);
   let color = colorStrings[data.index % colorStrings.length];
-  if (data.mode === "circle") {
-    circles.push(new Circle(posX, 10, size / 2, color));
-  } else if (data.mode === "poke") {
-    circles.push(new Poke(posX, 10, size / 2, color));
-  } else {
-    circles.push(new Circle(posX, 10, size / 2, color));
-  }
+  circles.push(new Circle(posX, 10, size / 2, color));
   isFriend = true;
   label = "!Laughter Incoming!";
 }
@@ -228,14 +189,14 @@ function drawText() {
     textSize(32);
   }
   textAlign(RIGHT);
-  text(label, window.innerWidth - 50, 100);
+  text(label, window.innerWidth-50, 100);
   textAlign(LEFT);
-  text(`${onlineNumber} friends online`, 50, 100);
-
+  text(`${onlineNumber} friends online`,50, 100)
+  
   //MIDDLE TEXT
   if (window.innerWidth <= 500) {
     textSize(56);
-  } else if (window.innerWidth > 500 && window.innderWidth <= 1080) {
+  } else if (window.innerWidth >500 && window.innderWidth <=1080) {
     textSize(80);
   } else {
     textSize(140);
@@ -248,7 +209,7 @@ function drawText() {
     50,
     0,
     window.innerWidth - 100,
-    window.innerHeight - 50
+    window.innerHeight -50
   );
 }
 
@@ -260,16 +221,24 @@ document.ontouchmove = function(event) {
   event.preventDefault();
 };
 
-function drawCredit() {
+function drawCredit () {
   // credit text
   textStyle(NORMAL);
   textSize(12);
   textAlign(LEFT);
-  text("created by Yiwei Huang", 50, window.innerHeight - 50);
+  text('created by Yiwei Huang',50,window.innerHeight-50);
+  
   textStyle(NORMAL);
   textSize(12);
   textAlign(RIGHT);
   //let a = createA('https://teachablemachine.withgoogle.com/', 'Teachable Machine');
-  //a.position(window.innerWidth-50,window.innerHeight-50);
+//a.position(window.innerWidth-50,window.innerHeight-50);
   //text(`Powered by Teachable Machine`,window.innerWidth-50,window.innerHeight-50);
 }
+
+
+/*
+function drawCamera () {
+  image(capture, 0,0,1920,1080);
+}
+*/
