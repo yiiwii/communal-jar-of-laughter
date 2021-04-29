@@ -71,7 +71,7 @@ function setup() {
   //capture video
   //capture = createCapture(VIDEO);
   //capture.size(1920, 1080);
-
+  
   // Start classifying
   // The sound model will continuously listen to the microphone
   classifier.classify(gotResult);
@@ -266,7 +266,6 @@ function drawCredit() {
   textSize(12);
   textAlign(LEFT);
   text("created by Yiwei Huang", 50, window.innerHeight - 50);
-
   textStyle(NORMAL);
   textSize(12);
   textAlign(RIGHT);
@@ -274,9 +273,3 @@ function drawCredit() {
   //a.position(window.innerWidth-50,window.innerHeight-50);
   //text(`Powered by Teachable Machine`,window.innerWidth-50,window.innerHeight-50);
 }
-
-/*
-function drawCamera () {
-  image(capture, 0,0,1920,1080);
-}
-*/
