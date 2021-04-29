@@ -15,6 +15,8 @@ var backgroundColors = ["#000000", "#e68873", "#c6e6f5"];
 var isFriend = false;
 var onlineNumber = 0;
 var eventLabel = "Laughing";
+// video background
+//let capture
 
 // Reference
 // Example based on https://www.youtube.com/watch?v=urR596FsU68
@@ -57,6 +59,12 @@ function preload() {
 
 function setup() {
   createCanvas(window.innerWidth, window.innerHeight);
+  
+  //capture video
+  //capture = createCapture(VIDEO);
+  //capture.size(1920, 1080);
+  
+  
   // Start classifying
   // The sound model will continuously listen to the microphone
   classifier.classify(gotResult);
@@ -159,7 +167,7 @@ function draw() {
     background(backgroundColors[0]);
   }
   drawText();
-  
+  //drawCamera();
   //drawRectangle();
   Engine.update(engine);
   for (let circle of circles) {
@@ -227,3 +235,10 @@ function drawCredit () {
 //a.position(window.innerWidth-50,window.innerHeight-50);
   //text(`Powered by Teachable Machine`,window.innerWidth-50,window.innerHeight-50);
 }
+
+
+/*
+function drawCamera () {
+  image(capture, 0,0,1920,1080);
+}
+*/
