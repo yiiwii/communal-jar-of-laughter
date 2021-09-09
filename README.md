@@ -13,7 +13,7 @@ and my laughter during the 2020 quarantine, achieved by using
 You can either laugh into the jar, or poke!
 
 ### Dependencies
-This demo also Uses p5.js, socket.io, node.js, express
+This demo also Uses p5.js, socket.io, node.js, and express
 
 
 #### Resources
