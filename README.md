@@ -11,6 +11,7 @@ and my laughter during the 2020 quarantine, achieved by using
 [the Teachable Machine](https://teachablemachine.withgoogle.com/).
 
 You can either laugh into the jar, or poke!
+Hope one day you can fill the jar with me together
 
 ### Dependencies
 This demo also Uses p5.js, socket.io, node.js, and express
