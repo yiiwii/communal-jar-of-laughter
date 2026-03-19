@@ -25,3 +25,15 @@ This demo also Uses p5.js, socket.io, node.js, and express
 #### Dev Log
 - Show how many users on line
 - Multi-user color coding
+
+---
+
+## 2026 Update — Migrating to Render
+
+The backend server has been migrated from Glitch to [Render](https://render.com/) for more reliable uptime. The Socket.IO client now connects to `https://communal-jar-of-laughter.onrender.com` instead of the Glitch server.
+
+The frontend remains accessible at the original Glitch URL.
+
+---
+
+*A heartfelt thank you to [Glitch](https://glitch.com/) for providing free hosting that made this project possible back in 2021. Without Glitch, a solo art project built during a pandemic quarantine simply wouldn't have had a home. Five years later, the jar still holds the laughter — and Glitch deserves a lot of the credit for that.*

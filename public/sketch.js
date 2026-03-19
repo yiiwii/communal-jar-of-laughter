@@ -77,7 +77,7 @@ function setup() {
   classifier.classify(gotResult);
 
   //socket
-  socket = io.connect();
+  socket = io.connect("https://communal-jar-of-laughter.onrender.com");
   //receive trigger
   socket.on("trigger", function(data) {
     dropFriendCircle(data);
