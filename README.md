@@ -1,6 +1,6 @@
 ![image](https://github.com/yiiwii/communal-jar-of-laughter/blob/main/demopic1.png
 )
-Hosted on Glitch, can be accessed on pc, mac or mobile phone through this [link](https://communal-jar-of-laughter22.glitch.me/)
+Hosted on Render, can be accessed on pc, mac or mobile phone through this [link](https://communal-jar-of-laughter.onrender.com/)
 ## Communal Jar of Laughter
 created by Yiwei Huang
 This is a project created during the 2021 pandemic while everyone was connecting/not connecting with each other on line.
