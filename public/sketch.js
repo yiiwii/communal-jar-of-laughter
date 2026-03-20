@@ -88,6 +88,24 @@ function setup() {
   socket.on("indexNum", arg => {
     index = arg;
   });
+  // Speech recognition — drops spoken words into the jar
+  let SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+  if (SpeechRecognition) {
+    let recognition = new SpeechRecognition();
+    recognition.continuous = true;
+    recognition.interimResults = false;
+    recognition.lang = 'en-US';
+    recognition.onresult = function(event) {
+      let last = event.results.length - 1;
+      let words = event.results[last][0].transcript.trim().split(/\s+/);
+      for (let w of words) {
+        if (w.length > 0) dropWord(w.toUpperCase());
+      }
+    };
+    recognition.onend = function() { recognition.start(); };
+    recognition.start();
+  }
+
   //matters engine setup
   engine = Engine.create();
   world = engine.world;
@@ -172,6 +190,14 @@ function dropPoke() {
   //socket.emit("playerIndex",index);
 }
 
+function dropWord(txt) {
+  let posX = random(80, window.innerWidth - 80);
+  let color = colorStrings[index % colorStrings.length];
+  circles.push(new Word(posX, -50, txt, color));
+  var data = { index: index, mode: "word", text: txt };
+  socket.emit("trigger", data);
+}
+
 // function to drop friends circles
 function dropFriendCircle(data) {
   let posX = random(window.innerWidth);
@@ -181,6 +207,8 @@ function dropFriendCircle(data) {
     circles.push(new Circle(posX, 10, size / 2, color));
   } else if (data.mode === "poke") {
     circles.push(new Poke(posX, 10, size / 2, color));
+  } else if (data.mode === "word") {
+    circles.push(new Word(posX, -50, data.text, color));
   } else {
     circles.push(new Circle(posX, 10, size / 2, color));
   }
