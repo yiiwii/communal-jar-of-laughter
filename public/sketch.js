@@ -38,7 +38,9 @@ let grounds = [];
 let mConstraint;
 let canvas;
 let isMobile = window.innerWidth < 768;
-let module = ((window.innerHeight / 100) * window.innerWidth) / 100 / 10 * (isMobile ? 3 : 1);
+let module = isMobile
+  ? (window.innerWidth / 100) * 5
+  : ((window.innerHeight / 100) * window.innerWidth) / 100 / 10;
 let sizes = [
   module,
   module * 1.5,
