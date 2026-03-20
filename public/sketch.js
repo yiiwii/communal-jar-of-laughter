@@ -101,10 +101,10 @@ function setup() {
         if (event.results[i].isFinal) {
           let transcript = event.results[i][0].transcript.trim();
           speechLabel = "heard: " + transcript;
-          let words = transcript.split(/\s+/);
-          for (let w of words) {
-            if (w.length > 0) dropWord(w.toUpperCase());
-          }
+          let words = transcript.split(/\s+/).filter(w => w.length > 0);
+          words.forEach((w, i) => {
+            setTimeout(() => dropWord(w.toUpperCase()), i * 300);
+          });
         } else {
           speechLabel = "hearing: " + event.results[i][0].transcript.trim() + "...";
         }
