@@ -37,7 +37,8 @@ let circles = [];
 let grounds = [];
 let mConstraint;
 let canvas;
-let module = ((window.innerHeight / 100) * window.innerWidth) / 100 / 10;
+let isMobile = window.innerWidth < 768;
+let module = ((window.innerHeight / 100) * window.innerWidth) / 100 / 10 * (isMobile ? 3 : 1);
 let sizes = [
   module,
   module * 1.5,
