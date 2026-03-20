@@ -15,6 +15,7 @@ var backgroundColors = ["#000000", "#e68873", "#c6e6f5"];
 var isFriend = false;
 var onlineNumber = 0;
 var eventLabel = "Laughing";
+var speechLabel = "speech: waiting...";
 // video background
 //let capture
 
@@ -96,13 +97,26 @@ function setup() {
     recognition.interimResults = false;
     recognition.lang = 'en-US';
     recognition.onresult = function(event) {
-      let last = event.results.length - 1;
-      let words = event.results[last][0].transcript.trim().split(/\s+/);
-      for (let w of words) {
-        if (w.length > 0) dropWord(w.toUpperCase());
+      for (let i = event.resultIndex; i < event.results.length; i++) {
+        if (event.results[i].isFinal) {
+          let transcript = event.results[i][0].transcript.trim();
+          speechLabel = "heard: " + transcript;
+          let words = transcript.split(/\s+/);
+          for (let w of words) {
+            if (w.length > 0) dropWord(w.toUpperCase());
+          }
+        } else {
+          speechLabel = "hearing: " + event.results[i][0].transcript.trim() + "...";
+        }
       }
     };
-    recognition.onend = function() { recognition.start(); };
+    recognition.onerror = function(event) {
+      speechLabel = "speech error: " + event.error;
+      console.warn('Speech recognition error:', event.error);
+    };
+    recognition.onend = function() {
+      try { recognition.start(); } catch(e) {}
+    };
     recognition.start();
   }
 
@@ -257,6 +271,7 @@ function drawText() {
   }
   textAlign(RIGHT);
   text(label, window.innerWidth - 50, 100);
+  text(speechLabel, window.innerWidth - 50, 140);
   textAlign(LEFT);
   text(`${onlineNumber} friends online`, 50, 100);
 
