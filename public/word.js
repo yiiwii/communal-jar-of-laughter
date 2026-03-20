@@ -1,6 +1,6 @@
 class Word {
   constructor(x, y, txt, color) {
-    let fontSize = constrain(window.innerWidth / 10, 28, 72);
+    let fontSize = random(12, 20);
     let w = txt.length * fontSize * 0.65;
     let h = fontSize * 1.2;
 

@@ -101,10 +101,10 @@ function setup() {
         if (event.results[i].isFinal) {
           let transcript = event.results[i][0].transcript.trim();
           speechLabel = "heard: " + transcript;
-          let words = transcript.split(/\s+/);
-          for (let w of words) {
-            if (w.length > 0) dropWord(w.toUpperCase());
-          }
+          let words = transcript.split(/\s+/).filter(w => w.length > 0);
+          words.forEach((w, i) => {
+            setTimeout(() => dropWord(w.toUpperCase()), i * 300);
+          });
         } else {
           speechLabel = "hearing: " + event.results[i][0].transcript.trim() + "...";
         }
@@ -207,7 +207,7 @@ function dropPoke() {
 function dropWord(txt) {
   let posX = random(80, window.innerWidth - 80);
   let color = colorStrings[index % colorStrings.length];
-  circles.push(new Word(posX, -50, txt, color));
+  circles.push(new Word(posX, 10, txt, color));
   var data = { index: index, mode: "word", text: txt };
   socket.emit("trigger", data);
 }
