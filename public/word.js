@@ -1,10 +1,11 @@
 class Word {
   constructor(x, y, txt, color) {
-    let fontSize = random(12, 20);
+    let isMobile = window.innerWidth < 768;
+    let fontSize = random(12, 20) * (isMobile ? 3 : 1);
     let w = txt.length * fontSize * 0.65;
     let h = fontSize * 1.2;
 
-    let options = { friction: 0.3, restitution: 0.5 };
+    let options = { friction: 0.3, restitution: 0.5, angle: random(-PI / 12, PI / 12) };
     this.body = Bodies.rectangle(x, y, w, h, options);
     this.txt = txt;
     this.color = color;
