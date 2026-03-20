@@ -96,13 +96,23 @@ function setup() {
     recognition.interimResults = false;
     recognition.lang = 'en-US';
     recognition.onresult = function(event) {
-      let last = event.results.length - 1;
-      let words = event.results[last][0].transcript.trim().split(/\s+/);
-      for (let w of words) {
-        if (w.length > 0) dropWord(w.toUpperCase());
+      for (let i = event.resultIndex; i < event.results.length; i++) {
+        if (event.results[i].isFinal) {
+          let words = event.results[i][0].transcript.trim().split(/\s+/);
+          for (let w of words) {
+            if (w.length > 0) dropWord(w.toUpperCase());
+          }
+        }
       }
     };
-    recognition.onend = function() { recognition.start(); };
+    recognition.onerror = function(event) {
+      if (event.error !== 'no-speech') {
+        console.warn('Speech recognition error:', event.error);
+      }
+    };
+    recognition.onend = function() {
+      try { recognition.start(); } catch(e) {}
+    };
     recognition.start();
   }
 
