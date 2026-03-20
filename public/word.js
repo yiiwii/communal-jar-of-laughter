@@ -1,10 +1,9 @@
 class Word {
   constructor(x, y, txt, color) {
     let isMobile = window.innerWidth < 768;
-    let fontSize = min(
-      random(12, 20) * (isMobile ? 9 : 1),
-      (window.innerWidth * 0.85) / (txt.length * 0.65)
-    );
+    let fontSize = isMobile
+      ? min(random(48, 80), (window.innerWidth * 0.85) / (txt.length * 0.65))
+      : random(12, 20);
     let w = txt.length * fontSize * 0.65;
     let h = fontSize * 1.2;
 
