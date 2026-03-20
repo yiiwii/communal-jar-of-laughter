@@ -207,7 +207,7 @@ function dropPoke() {
 function dropWord(txt) {
   let posX = random(80, window.innerWidth - 80);
   let color = colorStrings[index % colorStrings.length];
-  circles.push(new Word(posX, -50, txt, color));
+  circles.push(new Word(posX, 10, txt, color));
   var data = { index: index, mode: "word", text: txt };
   socket.emit("trigger", data);
 }
